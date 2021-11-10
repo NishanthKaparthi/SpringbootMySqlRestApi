@@ -75,11 +75,10 @@ public class EmployeeRepositoryTests {
 	public void deleteEmployeeTest() {
 //		employeeRepository.deleteById(5L);
 		Employee emp = employeeRepository.findById(6L).get();
-		
 		employeeRepository.delete(emp);
 		Employee emp2 = null;
 		Optional<Employee> optionalEmployee = employeeRepository.findByFirstName("saiteja");
-//		System.out.println(optionalEmployee.toString());
+//		System.out.println(optionalEmployee.toString())
 		if(optionalEmployee.isPresent()) {
 			emp2 = optionalEmployee.get();
 		}
