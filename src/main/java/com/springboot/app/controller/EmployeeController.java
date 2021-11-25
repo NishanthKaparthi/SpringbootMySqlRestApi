@@ -1,6 +1,8 @@
 package com.springboot.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,9 +68,11 @@ public class EmployeeController {
 	//delete employee using id
 	//http://localhost:8080/api/employee/1
 	@DeleteMapping("/{id}")
-	public ResponseEntity<String> deleteEmployee(@PathVariable("id") long id){
+	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable("id") long id){
 		employeeService.deleteEmployee(id);
-		return new ResponseEntity<String>("Employee deleted", HttpStatus.OK);
+		Map<String, Boolean> response = new HashMap<String, Boolean>();
+		response.put("deleted", true);
+		return new ResponseEntity<Map<String, Boolean>>(response, HttpStatus.OK);
 	}
 	
 	
